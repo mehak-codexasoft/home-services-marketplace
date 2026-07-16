@@ -29,7 +29,7 @@ const cols = [
     links: [
       { label: 'Live demo', to: '/dashboard' },
       { label: 'Request a demo', action: 'contact' },
-      { label: 'Contact CodexaSoft', action: 'contact' },
+      { label: 'Contact us', action: 'contact' },
       { label: 'Privacy & terms', to: '/legal' },
     ],
   },
@@ -76,8 +76,8 @@ export default function Footer() {
             </Link>
             <p className="footer__about">
               An on-demand home services marketplace connecting customers with
-              verified professionals through real-time booking, dispatch, and
-              payments — engineered by CodexaSoft.
+              verified professionals across the UAE — real-time booking, live
+              dispatch, and secure payments.
             </p>
             <div className="footer__socials">
               {socials.map((s) =>
@@ -111,7 +111,7 @@ export default function Footer() {
         </div>
 
         <div className="footer__bottom">
-          <span>© {new Date().getFullYear()} Khidma — Built by CodexaSoft for a UAE service marketplace.</span>
+          <span>© {new Date().getFullYear()} Khidma — On-demand home services across the UAE.</span>
           <span style={{ display: 'flex', gap: 20 }}>
             <Link to="/legal#privacy">Privacy</Link>
             <Link to="/legal#terms">Terms</Link>
