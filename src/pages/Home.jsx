@@ -100,7 +100,7 @@ export default function Home() {
               A scalable platform, built around real-time service delivery
             </h2>
             <p className="section-lead">
-              CodexaSoft built native-feeling apps on a centralized backend that
+              Khidma pairs native-feeling apps with a centralized backend that
               coordinates bookings, availability, and fulfillment — with
               independent services designed for reliable growth.
             </p>
@@ -220,7 +220,7 @@ export default function Home() {
                   Explore the Live Demo {Icon.arrow(18)}
                 </Link>
                 <button className="btn btn-ghost btn-lg btn-block" onClick={openContact}>
-                  Talk to CodexaSoft
+                  Talk to our team
                 </button>
                 <p className="cta__note">No credit card · Guided walkthrough</p>
               </div>

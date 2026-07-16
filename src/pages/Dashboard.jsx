@@ -153,7 +153,7 @@ export default function Dashboard() {
           {view === 'analytics' && <AnalyticsView />}
 
           <p className="dash-note">
-            Interactive demo of the Khidma operations console · Sample data · Built by CodexaSoft
+            Interactive demo of the Khidma operations console · Sample data
           </p>
         </main>
       </div>

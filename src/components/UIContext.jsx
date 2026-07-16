@@ -33,7 +33,7 @@ export function UIProvider({ children }) {
         onClose={closeContact}
         onSubmit={() => {
           closeContact()
-          notify({ title: 'Request received', text: 'CodexaSoft will reach out within one business day.' })
+          notify({ title: 'Request received', text: 'The Khidma team will reach out within one business day.' })
         }}
       />
       <Toast toast={toast} onClose={() => setToast(null)} />

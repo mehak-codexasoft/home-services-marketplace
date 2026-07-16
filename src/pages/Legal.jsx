@@ -19,8 +19,8 @@ const sections = [
     icon: 'doc',
     title: 'Terms',
     body: [
-      'This site is published by CodexaSoft as a portfolio demonstration of an on-demand home services marketplace. It is not a live booking service — no real professional can be hired and no real payment can be taken through it.',
-      'The interface, design system, and source code are the work of CodexaSoft. You are welcome to explore the demo; please do not present it as a live commercial service.',
+      'This site is a demonstration build of an on-demand home services marketplace. It is not a live booking service — no real professional can be hired and no real payment can be taken through it.',
+      'You are welcome to explore the demo; please do not present or deploy it as a live commercial service.',
       'The demo is provided as-is, without warranty, and may change or be taken offline at any time.',
     ],
   },
@@ -31,7 +31,7 @@ const sections = [
     body: [
       'Because this build has no server, no database, and no authentication, it holds no credentials or personal data to protect. The "Sign in" action opens the demo console directly.',
       'The payment flows shown in the console are illustrative only. No card details are ever collected, processed, or stored anywhere in this demo.',
-      'In a production deployment, CodexaSoft implements payments through a certified provider so that card data never touches the application servers.',
+      'In a production deployment, payments are handled by a certified payment provider so that card data never touches the application servers.',
     ],
   },
 ]
@@ -56,8 +56,8 @@ export default function Legal() {
           <span className="eyebrow">Legal</span>
           <h1 className="section-title">Privacy, terms & security</h1>
           <p className="section-lead">
-            Khidma is a demonstration product built by CodexaSoft. Here's exactly
-            what that means for your data.
+            Khidma is a demonstration product. Here's exactly what that means
+            for your data.
           </p>
           <div className="legal__nav">
             {sections.map((s) => (
@@ -81,10 +81,10 @@ export default function Legal() {
         ))}
 
         <div className="legal__foot">
-          <p>Questions about this demo or how it was built?</p>
+          <p>Questions about this demo or how it works?</p>
           <div className="legal__foot-actions">
             <button className="btn btn-primary" onClick={openContact}>
-              {Icon.mail(17)} Contact CodexaSoft
+              {Icon.mail(17)} Contact us
             </button>
             <Link to="/" className="btn btn-outline">Back to home</Link>
           </div>
