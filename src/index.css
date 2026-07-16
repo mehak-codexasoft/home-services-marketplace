@@ -2390,3 +2390,120 @@ h4 {
   .hero__visual { opacity: 1; transform: none; }
   .scroll-progress { transition: none; }
 }
+
+/* ============================================================
+   LEGAL PAGE + footer button-links
+   ============================================================ */
+
+/* Footer nav entries that trigger the contact modal are <button>s —
+   make them read exactly like the neighbouring links. */
+.footer__col button,
+.footer__socials button {
+  font-family: inherit;
+  text-align: left;
+}
+
+.footer__col button {
+  display: block;
+  font-size: 0.9rem;
+  color: #9fb0cb;
+  padding: 6px 0;
+  transition: color 0.15s ease;
+}
+
+.footer__col button:hover { color: #fff; }
+
+.footer__socials button {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: grid;
+  place-items: center;
+  color: #c3d0e5;
+  transition: all 0.18s ease;
+}
+
+.footer__socials button:hover {
+  background: var(--accent-500);
+  color: var(--brand-900);
+  transform: translateY(-2px);
+}
+
+.legal {
+  padding: calc(var(--header-h) + 60px) 0 90px;
+  background: linear-gradient(180deg, var(--paper), #fff);
+  min-height: 100vh;
+}
+
+.legal__head { margin-bottom: 38px; }
+
+.legal__head .section-title { max-width: none; }
+
+.legal__nav {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+.legal__nav .filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legal__card {
+  background: var(--white);
+  border: 1px solid var(--slate-100);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 18px;
+  scroll-margin-top: calc(var(--header-h) + 20px);
+}
+
+.legal__card-head {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 16px;
+}
+
+.legal__card-head h2 { font-size: 1.35rem; }
+
+.legal__icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(140deg, var(--brand-700), var(--brand-800));
+  color: var(--accent-500);
+  flex-shrink: 0;
+}
+
+.legal__card p {
+  color: var(--slate-500);
+  font-size: 0.96rem;
+  margin-bottom: 12px;
+}
+
+.legal__card p:last-child { margin-bottom: 0; }
+
+.legal__foot {
+  text-align: center;
+  margin-top: 44px;
+  padding-top: 34px;
+  border-top: 1px dashed var(--slate-200);
+}
+
+.legal__foot p { color: var(--slate-500); margin-bottom: 18px; }
+
+.legal__foot-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}

@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import Dashboard from './pages/Dashboard'
+import Legal from './pages/Legal'
 import ScrollProgress from './components/ScrollProgress'
 import { UIProvider } from './components/UIContext'
 
@@ -24,6 +25,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/legal" element={<Legal />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />
