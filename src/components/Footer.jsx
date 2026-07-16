@@ -1,22 +1,67 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Icon from './Icons'
+import { useUI } from './UIContext'
 
+// Every entry resolves to a real destination: a console view, a section of the
+// home page, the legal page, or the contact modal.
 const cols = [
   {
     title: 'Platform',
-    links: ['Service Booking', 'Provider App', 'Live Dispatch', 'Payments'],
+    links: [
+      { label: 'Live Booking', to: '/dashboard?view=bookings' },
+      { label: 'Live Dispatch', to: '/dashboard?view=dispatch' },
+      { label: 'Providers', to: '/dashboard?view=providers' },
+      { label: 'Payments', to: '/dashboard?view=payments' },
+      { label: 'Reviews', to: '/dashboard?view=reviews' },
+    ],
+  },
+  {
+    title: 'Explore',
+    links: [
+      { label: 'Features', to: '/#features' },
+      { label: 'How it works', to: '/#modules' },
+      { label: 'Analytics', to: '/#analytics' },
+      { label: 'The challenge', to: '/#challenges' },
+    ],
   },
   {
     title: 'Company',
-    links: ['About CodexaSoft', 'Case Studies', 'Careers', 'Contact'],
-  },
-  {
-    title: 'Resources',
-    links: ['Documentation', 'Security', 'Support Center', 'Status'],
+    links: [
+      { label: 'Live demo', to: '/dashboard' },
+      { label: 'Request a demo', action: 'contact' },
+      { label: 'Contact CodexaSoft', action: 'contact' },
+      { label: 'Privacy & terms', to: '/legal' },
+    ],
   },
 ]
 
+// Real profile URLs go here. While a url is empty the icon opens the contact
+// modal instead of pointing nowhere.
+const socials = [
+  { label: 'LinkedIn', icon: 'linkedin', url: '' },
+  { label: 'X', icon: 'twitter', url: '' },
+  { label: 'Email', icon: 'mail', url: '' },
+  { label: 'Website', icon: 'globe', url: '' },
+]
+
 export default function Footer() {
+  const { pathname } = useLocation()
+  const navigate = useNavigate()
+  const { openContact } = useUI()
+
+  // "/#features" — scroll if we're already home, otherwise route home first.
+  const handleHash = (e, to) => {
+    if (!to || !to.startsWith('/#')) return
+    e.preventDefault()
+    const id = to.slice(2)
+    if (pathname === '/') {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      navigate('/')
+      setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), 80)
+    }
+  }
+
   return (
     <footer className="footer">
       <div className="container">
@@ -35,19 +80,32 @@ export default function Footer() {
               payments — engineered by CodexaSoft.
             </p>
             <div className="footer__socials">
-              <a href="#" aria-label="LinkedIn">{Icon.linkedin(18)}</a>
-              <a href="#" aria-label="X">{Icon.twitter(18)}</a>
-              <a href="#" aria-label="Email">{Icon.mail(18)}</a>
-              <a href="#" aria-label="Website">{Icon.globe(18)}</a>
+              {socials.map((s) =>
+                s.url ? (
+                  <a key={s.label} href={s.url} aria-label={s.label} target="_blank" rel="noopener noreferrer">
+                    {Icon[s.icon](18)}
+                  </a>
+                ) : (
+                  <button key={s.label} onClick={openContact} aria-label={s.label} title={`${s.label} — get in touch`}>
+                    {Icon[s.icon](18)}
+                  </button>
+                )
+              )}
             </div>
           </div>
 
           {cols.map((c) => (
             <div className="footer__col" key={c.title}>
               <h5>{c.title}</h5>
-              {c.links.map((l) => (
-                <a href="#" key={l}>{l}</a>
-              ))}
+              {c.links.map((l) =>
+                l.action === 'contact' ? (
+                  <button key={l.label} onClick={openContact}>{l.label}</button>
+                ) : (
+                  <Link key={l.label} to={l.to} onClick={(e) => handleHash(e, l.to)}>
+                    {l.label}
+                  </Link>
+                )
+              )}
             </div>
           ))}
         </div>
@@ -55,9 +113,9 @@ export default function Footer() {
         <div className="footer__bottom">
           <span>© {new Date().getFullYear()} Khidma — Built by CodexaSoft for a UAE service marketplace.</span>
           <span style={{ display: 'flex', gap: 20 }}>
-            <a href="#">Privacy</a>
-            <a href="#">Terms</a>
-            <a href="#">Security</a>
+            <Link to="/legal#privacy">Privacy</Link>
+            <Link to="/legal#terms">Terms</Link>
+            <Link to="/legal#security">Security</Link>
           </span>
         </div>
       </div>

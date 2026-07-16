@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import Icon from '../components/Icons'
 import Modal from '../components/Modal'
@@ -54,6 +54,12 @@ export default function Dashboard() {
   const [newOpen, setNewOpen] = useState(false)
   const [detail, setDetail] = useState(null) // booking detail modal
   const counterRef = useState(() => ({ n: 0 }))[0]
+
+  // Follow ?view= when it changes (e.g. footer links clicked from this page)
+  useEffect(() => {
+    const v = new URLSearchParams(search).get('view')
+    if (v && dashNav.some((n) => n.key === v)) setView(v)
+  }, [search])
 
   useReveal([view, bookings.length, dispatch.length])
 
